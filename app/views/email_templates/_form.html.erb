@@ -1,0 +1,41 @@
+<%= form_for @email_template, :html => { :class => "form-horizontal email_template" } do |f| %>
+
+    <% if @email_template.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@email_template.errors.count, "error") %> prohibited this email_template from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @email_template.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'form-control' %>
+    </div>
+    <%= error_span(@email_template[:name]) %>
+  </div>
+
+
+  <div class="control-group">
+      <label class="control-label" for="email_template_content">Content</label>
+      <div class="controls">
+        <%= f.text_area :content, :class => 'form-control' , :rows => "5"%> 
+      </div>
+  </div>
+
+
+<br>
+
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            email_templates_path, :class => 'btn btn-default' %>
+
+<% end %>
