@@ -79,6 +79,6 @@ helper_method :current_user
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def campaign_params
-      params.require(:campaign).permit(:name, :account_id, :email_limit, :email_used , :email_template_id , :email_list_id)
+      params.require(:campaign).permit(:name, :account_id, :email_limit, :email_used , :email_template_id , :email_list_id ,:runtime)
     end
 end

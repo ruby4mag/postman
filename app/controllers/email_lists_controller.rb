@@ -34,6 +34,7 @@ class EmailListsController < ApplicationController
 
     respond_to do |format|
       if @email_list.save
+        Emailid.import(email_list_params_no[:datafile], email_list_params[:name])
         format.html { redirect_to @email_list, notice: 'Email list was successfully created.' }
         format.json { render :show, status: :created, location: @email_list }
       else
@@ -42,7 +43,6 @@ class EmailListsController < ApplicationController
       end
     end
 
-   Emailid.import(email_list_params_no[:datafile], email_list_params[:name])
    #redirect_to :back, notice: "Exercises imported."
 
   end

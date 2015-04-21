@@ -71,6 +71,24 @@
     <%= error_span(@campaign[:email_used]) %>
   </div>
 
+
+ <div class="control-group">
+    <label class="control-label" for="campaign_email_used">Date/Time</label>
+    <div class='input-group date' id='datetimepicker1'>
+     <%= f.text_field :runtime , 'type' => 'text' , 'class' => "form-control" ,'data-date-format' => "YYYY-MM-DD HH:mm:00" %>
+     <span class="input-group-addon">
+         <span class="glyphicon glyphicon-calendar"></span>
+     </span>
+    </div>
+ </div>
+
+        <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker1').datetimepicker();
+            });
+        </script>
+
+
   <br>
 
   <%= f.submit nil, :class => 'btn btn-primary' %>

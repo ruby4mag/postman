@@ -6,12 +6,14 @@
 <dl class="dl-horizontal">
   <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
   <dd><%= @email_template.name %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:users_id) %>:</strong></dt>
-  <dd><%= @email_template.users_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:user_id) %>:</strong></dt>
+  <dd><%= User.find(@email_template.user_id).first_name%></dd>
+  <dt><strong><%= model_class.human_attribute_name(:MailSubject) %>:</strong></dt>
+  <dd><%= @email_template.mailsubject %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:EmailFrom) %>:</strong></dt>
+  <dd><%= @email_template.mailfrom %></dd>
   <dt><strong><%= model_class.human_attribute_name(:content) %>:</strong></dt>
   <dd><%= @email_template.content %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:user_id) %>:</strong></dt>
-  <dd><%= @email_template.user_id %></dd>
 </dl>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),

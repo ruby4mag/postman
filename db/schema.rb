@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150415144921) do
+ActiveRecord::Schema.define(version: 20150420203623) do
 
   create_table "accounts", force: :cascade do |t|
     t.string   "name",        limit: 255
@@ -31,6 +31,8 @@ ActiveRecord::Schema.define(version: 20150415144921) do
     t.datetime "updated_at",                    null: false
     t.integer  "email_template_id", limit: 4
     t.integer  "email_list_id",     limit: 4
+    t.datetime "runtime"
+    t.string   "runstatus",         limit: 255
   end
 
   add_index "campaigns", ["account_id"], name: "index_campaigns_on_account_id", using: :btree
@@ -47,12 +49,14 @@ ActiveRecord::Schema.define(version: 20150415144921) do
   add_index "email_lists", ["user_id"], name: "fk_rails_78bfb5da36", using: :btree
 
   create_table "email_templates", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.integer  "users_id",   limit: 4
-    t.text     "content",    limit: 65535
-    t.integer  "user_id",    limit: 4
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.string   "name",        limit: 255
+    t.integer  "users_id",    limit: 4
+    t.text     "content",     limit: 65535
+    t.integer  "user_id",     limit: 4
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.string   "mailsubject", limit: 255
+    t.string   "mailfrom",    limit: 255
   end
 
   add_index "email_templates", ["user_id"], name: "fk_rails_b772776f2e", using: :btree

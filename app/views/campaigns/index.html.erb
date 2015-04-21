@@ -11,6 +11,7 @@
       <th><%= model_class.human_attribute_name(:email_used) %></th>
       <th><%= model_class.human_attribute_name(:email_template) %></th>
       <th><%= model_class.human_attribute_name(:email_list) %></th>
+      <th><%= model_class.human_attribute_name(:runstatus) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -23,6 +24,7 @@
         <td><%= campaign.email_used %></td>
         <td><%= EmailTemplate.find(campaign.email_template_id).name %></td>
         <td><%= EmailList.find(campaign.email_list_id).name %></td>
+        <td><%= campaign.runstatus %></td>
         <td>
           <% if can? :update, @campaign %>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),

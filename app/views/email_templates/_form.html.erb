@@ -25,6 +25,23 @@
 
 
   <div class="control-group">
+    <%= f.label :Subject, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :mailsubject, :class => 'form-control' %>
+    </div>
+    <%= error_span(@email_template[:name]) %>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :MailFrom, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :mailfrom, :class => 'form-control' %>
+    </div>
+    <%= error_span(@email_template[:name]) %>
+  </div>
+
+
+  <div class="control-group">
       <label class="control-label" for="email_template_content">Content</label>
       <div class="controls">
         <%= f.text_area :content, :class => 'form-control' , :rows => "5"%> 

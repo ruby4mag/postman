@@ -13,7 +13,7 @@
   <tbody>
     <% @email_templates.each do |email_template| %>
       <tr>
-        <td><%= email_template.name %></td>
+        <td><%= link_to email_template.name, email_template_path(email_template) %></td>
         <td><%= User.find(email_template.user_id).first_name %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
