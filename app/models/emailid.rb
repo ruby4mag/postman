@@ -7,7 +7,7 @@ class Emailid < ActiveRecord::Base
 
 def self.import(file, list_id)
      unless file.nil?
-     CSV.foreach(file.path, headers: true) do |row|
+     CSV.foreach(file.path) do |row|
        record = Emailid.where(
          :email_list_id => EmailList.find_by(name: list_id),
          :email => row[0]

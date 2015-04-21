@@ -1,0 +1,5 @@
+<%- @email_ids.each do |email_template| -%>
+  <%-   row = [email_template.email] -%>
+  <%= CSV.generate_line (row), {:row_sep => nil} %>
+<%- end -%>
+

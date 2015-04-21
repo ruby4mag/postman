@@ -11,6 +11,10 @@ devise_scope :user do
   root :to => 'devise/sessions#new'
 end
 
+ get 'email_lists/:id/download(.:format)' => 'email_lists#download' , as: :download 
+
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -18,6 +18,9 @@
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_email_list_path(email_list), :class => 'btn btn-default btn-xs' %>
+ <%= link_to t('.download', :default => t("helpers.links.download")),
+                      download_path(email_list,format: :csv), :class => 'btn btn-default btn-xs' %>
+
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       email_list_path(email_list),
                       :method => :delete,

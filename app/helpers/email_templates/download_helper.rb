@@ -1,0 +1,2 @@
+module EmailTemplates::DownloadHelper
+end

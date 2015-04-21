@@ -2,6 +2,7 @@ class EmailListsController < ApplicationController
   before_action :authenticate_user!
   load_and_authorize_resource param_method: :email_list_params
   before_action :set_email_list, only: [:show, :edit, :update, :destroy]
+  before_action :set_emailid, only: [:download]
 
   # GET /email_lists
   # GET /email_lists.json
@@ -26,6 +27,19 @@ class EmailListsController < ApplicationController
   # GET /email_lists/1/edit
   def edit
   end
+
+
+  def download
+@email_ids = Emailid.where("email_list_id = ?", params[:id] )
+  respond_to do |format|
+    format.html
+    format.csv do
+    headers['Content-Type'] = 'text/csv'
+    headers['Content-Disposition'] = 'attachment; filename=email_list.csv'    
+    end
+  end
+  end
+
 
   # POST /email_lists
   # POST /email_lists.json
@@ -52,6 +66,7 @@ class EmailListsController < ApplicationController
   def update
     respond_to do |format|
       if @email_list.update(email_list_params)
+        Emailid.import(email_list_params_no[:datafile], email_list_params[:name])
         format.html { redirect_to @email_list, notice: 'Email list was successfully updated.' }
         format.json { render :show, status: :ok, location: @email_list }
       else
@@ -84,4 +99,8 @@ class EmailListsController < ApplicationController
     def email_list_params_no
       params.require(:email_list).permit(:datafile )
     end
+    def set_emailid
+      @email_ids = Emailid.where("email_list_id = ?", params[:id] )
+    end
+
 end

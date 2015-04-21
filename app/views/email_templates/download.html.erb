@@ -1,0 +1,5 @@
+<%- headers = ['Email'] -%>
+<%= CSV.generate_line headers %>
+<%- @email_templates.each do |email_template| -%>
+  <%= CSV.generate_line(email_template.email) %>
+<%- end -%>

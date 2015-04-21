@@ -1,7 +1,8 @@
 class EmailTemplatesController < ApplicationController
   before_action :authenticate_user!
   load_and_authorize_resource  param_method: :email_template_params
-  before_action :set_email_template, only: [:show, :edit, :update, :destroy]
+  before_action :set_email_template, only: [:show, :edit, :update, :destroy, :download]
+  before_action :set_emailid, only: [:download]
   # GET /email_templates
   # GET /email_templates.json
   def index
@@ -71,6 +72,9 @@ class EmailTemplatesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_email_template
       @email_template = EmailTemplate.find(params[:id])
+    end
+    def set_emailid
+      @email_id = Emailid.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
