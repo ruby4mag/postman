@@ -35,6 +35,9 @@ class Ability
              email_list.try(:user_id) == user.id
          end
 
+         can :download, EmailList do |email_list|
+             email_list.try(:user_id) == user.id
+         end
 
 
 
