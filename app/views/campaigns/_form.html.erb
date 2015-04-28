@@ -28,31 +28,19 @@
 
       <div class="control-group">
         <label class="controls">Account</label><br>
-            <select name="campaign[account_id]" class="form-control">
-                <% Account.all.each do |account| %>
-                    <option value=<%= account.id %>><%= account.name %> </option>
-                <% end %>
-            </select>
+	<%= f.collection_select(:account_id, Account.all, :id, :name,{:include_blank => 'Select Account'}, {:class => "form-control"} ) %>
       </div>
 
 
       <div class="control-group">
         <label class="controls">Email Template</label><br>
-            <select name="campaign[email_template_id]" class="form-control">
-                <% EmailTemplate.all.each do |email_template| %>
-                    <option value=<%= email_template.id %>><%= email_template.name %> </option>
-                <% end %>
-            </select>
+	<%= f.collection_select(:email_template_id, EmailTemplate.all, :id, :name,{:include_blank => 'Select Email Template'}, {:class => "form-control"} ) %>
       </div>
+
 
       <div class="control-group">
         <label class="controls">Email List</label><br>
-            <select name="campaign[email_list_id]" class="form-control">
-                <% EmailList.all.each do |email_list| %>
-                    <option value=<%= email_list.id %>><%= email_list.name %> </option>
-                <% end %>
-            </select>
-      </div>
+	<%= f.collection_select(:email_list_id, EmailList.all, :id, :name,{:include_blank => 'Select Email List'}, {:class => "form-control"} ) %>
 
 
 
